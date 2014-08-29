@@ -593,8 +593,21 @@ public class BeaconManager {
     public static BeaconSimulator getBeaconSimulator() {
         return BeaconManager.beaconSimulator;
     }
-
-
+    /**
+     * Sets the iBeacon parser in order to detect iBeacon devices.
+     * @param enable
+     */
+    public void enableIBeaconsDetection(boolean enable) {
+    	if(enable) {
+    		beaconParsers.add(Utils.IBEACON_PARSER);
+    	} else {
+    		int index = beaconParsers.indexOf(Utils.IBEACON_PARSER);
+    		if(index >= 0) {
+    			beaconParsers.remove(index);
+    		}
+    	}
+    }
+    
     protected void setDataRequestNotifier(RangeNotifier notifier) { this.dataRequestNotifier = notifier; }
     protected RangeNotifier getDataRequestNotifier() { return this.dataRequestNotifier; }
 

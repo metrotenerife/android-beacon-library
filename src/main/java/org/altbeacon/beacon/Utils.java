@@ -14,6 +14,11 @@ import java.util.Comparator;
 public final class Utils {
 
 	private static final String TAG = "Utils";
+	/**
+	 * BeaconParser object to detect iBeacon devices.
+	 */
+	public static final BeaconParser IBEACON_PARSER = new BeaconParser()
+			.setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24");
 	
 	private Utils() { }
 	
