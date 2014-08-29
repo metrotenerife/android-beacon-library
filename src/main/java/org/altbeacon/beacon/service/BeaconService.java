@@ -200,7 +200,7 @@ public class BeaconService extends Service {
 
     @Override
     public void onCreate() {
-        Log.i(TAG, "beaconService version "+ BuildConfig.VERSION_NAME+" is starting up");
+        //Log.i(TAG, "beaconService version "+ BuildConfig.VERSION_NAME+" is starting up");
         getBluetoothAdapter();
         bluetoothCrashResolver = new BluetoothCrashResolver(this);
         bluetoothCrashResolver.start();

@@ -23,6 +23,10 @@
  */
 package org.altbeacon.beacon;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.altbeacon.beacon.service.MonitoringData;
 import org.altbeacon.beacon.service.RangingData;
 
@@ -64,6 +68,11 @@ public class BeaconIntentProcessor extends IntentService {
             java.util.Collection<Beacon> beacons = rangingData.getBeacons();
 			if (notifier != null) {
 				notifier.didRangeBeaconsInRegion(beacons, rangingData.getRegion());
+				if(beacons.size() > 0) {
+					Collections.sort((List<Beacon>)beacons, new Utils.BeaconProximityComparator());
+					Beacon beacon = (Beacon) beacons.iterator().next();
+					notifier.didRangeNearestBeaconInRegion(beacon, rangingData.getRegion());
+				}
 			}
             else {
                 BeaconManager.logDebug(TAG, "but ranging notifier is null, so we're dropping it.");

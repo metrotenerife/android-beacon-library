@@ -42,4 +42,13 @@ public interface RangeNotifier {
 	 * @param region the <code>Region</code> object that defines the criteria for the ranged beacons
 	 */
 	public void didRangeBeaconsInRegion(Collection<Beacon> beacons, Region region);
+	
+	/**
+	 * Similar to didRangeBeaconsInRegion
+	 * @see RangeNotifier#didRangeBeaconsInRegion(Collection<Beacon> beacons, Region region)
+	 * Returns information about the nearest Beacon in Region.
+	 * @param beacon a <code>Beacon<code> object representing the nearest beacon that has been seen
+	 * @param region the <code>Region</code> object that defines the criteria for the ranged beacon
+	 */
+	public void didRangeNearestBeaconInRegion(Beacon beacon, Region region);
 }
